@@ -3,7 +3,7 @@
     class api {
         public $config = [];
 
-        function __construct($token = null, $group_id = null, $sub = true, $like = true, $com = true, $api = "5.131", $img = "bg.jpg", $output = "output.png", $font = "UniNeue-HeavyItalic.otf") {
+        function __construct($token, $group_id, $sub, $like, $com, $api, $img, $output, $font) {
             $this->config['settings'] = [
                 'token' => $token,
                 'group_id' => $group_id,
@@ -22,15 +22,23 @@
             if($this->config['sub']['active']) {
                 $this->config['sub'] += [
                     'fontsize' => 16,             // Размер шрифта
+
                     'fontcolor' => '255,255,255',             // Цвет текста
+
                     'width' => 97,             // Ширина аватарки
                     'height' => 97,             // Высота аватарки
-                    'p_pixel_x' => 730,              // Координаты аватарки по оси Х
-                    'p_pixel_y' => 131,             // Координаты аватарки по оси Y
-                    't_pixel_x' => 778,             // Координаты имени и фамилии по оси Х
-                    't_pixel_y' => 255,             // Координаты имени и фамилии по оси Y
+
+                    'title_pixel_x' => 720,             // Координаты Заголовка по оси X
+                    'title_pixel_y' => 138,             // Координаты Заголовка по оси Y
+
+                    'p_pixel_x' => 729,              // Координаты аватарки по оси Х
+                    'p_pixel_y' => 152,             // Координаты аватарки по оси Y
+
+                    't_pixel_x' => 725,             // Координаты имени и фамилии по оси Х
+                    't_pixel_y' => 275,             // Координаты имени и фамилии по оси Y
                 ];
             }
+
             /* ------------------------ ТОП ПО КОЛ-ВУ ЛАЙКОВ ------------------------ */
             if($this->config['like']['active']) {
                 $this->config['like'] += [
