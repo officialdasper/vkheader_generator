@@ -1,3 +1,6 @@
-
-logs.txt
+*.txt
 .idea
+
+header/*
+!header/banner_vk.png
+!header/shadow.png
