@@ -1,7 +1,7 @@
 <?php
     define('BASEPATH', str_replace('\\', '/', dirname(__FILE__)) . '/');
 
-    require_once("./lib/Generator.php");
+    require_once(BASEPATH."lib/Generator.php");
 
     header('Content-type: text/html; charset=utf-8');
 

@@ -71,7 +71,7 @@
             $this->setLog(strip_tags($msg));
             // Скачиваем фото
             if(!empty($this->sub['firstname']) && !empty($this->sub['lastname']) && !empty($this->sub['photo'])) {
-                $this->api->DownloadImages($this->sub['photo'], 'header/last_subscribe.jpg');
+                $this->api->DownloadImages($this->sub['photo'], BASEPATH.'header/last_subscribe.jpg');
             }
 
             if($this->debug) echo $msg;
@@ -189,8 +189,9 @@
                 $bg->annotateImage($draw, $this->api->config['sub']['title_pixel_x'], $this->api->config['sub']['title_pixel_y'], 0, mb_strtoupper("last subscriber", 'UTF-8'));
 
 
-                $bg->annotateImage($draw, $this->api->config['sub']['t_pixel_x'], $this->api->config['sub']['t_pixel_y'], 0, mb_strtoupper("{$this->sub['firstname']} {$this->sub['lastname']}", 'UTF-8'));
                 $draw->setTextAlignment(\Imagick::ALIGN_CENTER);
+                $bg->annotateImage($draw, $this->api->config['sub']['t_pixel_x'], $this->api->config['sub']['t_pixel_y'], 0, mb_strtoupper("{$this->sub['firstname']}\n{$this->sub['lastname']}", 'UTF-8'));
+
 
             }
 
@@ -241,13 +242,13 @@
             $getUrl = $this->api->getApiMethod('photos.getOwnerCoverPhotoUploadServer', [
                 'group_id' => $this->api->config['settings']['group_id'],
 
-                'crop_x' => '198', // Координата X верхнего левого угла для обрезки изображения.
+                'crop_x' => '0', // Координата X верхнего левого угла для обрезки изображения.
                 'crop_y' => '0', // Координата Y верхнего левого угла для обрезки изображения.
-                'crop_x2' => '1200', // Координата X нижнего правого угла для обрезки изображения.
-                'crop_y2' => '400', // Координата Y нижнего правого угла для обрезки изображения.
+                'crop_x2' => '1918', // Координата X нижнего правого угла для обрезки изображения.
+                'crop_y2' => '766', // Координата Y нижнего правого угла для обрезки изображения.
             ]);
             $this->setLog('Получаю адресс сервера ' . $getUrl);
-
+            
 
             if($getUrl) {
                 $getUrl = json_decode($getUrl, true);
